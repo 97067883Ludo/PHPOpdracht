@@ -13,7 +13,7 @@
         <input type="text" name="naam" placeholder="Uw naam" required /><br />
         <select name="land">
             <option value="Maak-Keuze">Maak Keuze</option>
-            <option value="NL" se>Nederland</option>
+            <option value="NL">Nederland</option>
             <option value="DE">Duitsland</option>
             <option value="EN">Engeland</option>
             <option value="ES">Spaans</option>
@@ -47,8 +47,7 @@
 
         if ($naam == NULL) {
             showMessage("Naam niet ingevuld");
-        } 
-        else {
+        } else {
             switch ($taal) {
                 case 'NL':
                     echo "$NL, $naam";
