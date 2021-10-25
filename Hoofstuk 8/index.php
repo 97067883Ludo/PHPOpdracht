@@ -3,11 +3,11 @@ session_start();
 
 if (!isset($_SESSION['artikelen'])) {
     $artikelen = array(
-        array('artikel' => "pizza Margherita", "prijs" => "12,50", "aantal" => 0),
-        array('artikel' => "Pizza Funghi", "prijs" => "12,50", "aantal" => 0),
-        array('artikel' => "Pizza Marina", "prijs" => "13,95", "aantal" => 0),
-        array('artikel' => "Pizza Hawai", "prijs" => "11,30", "aantal" => 0),
-        array('artikel' => "Pizza Quattro Formaggi", "prijs" => "14,50", "aantal" => 0)
+        array('artikel' => "pizza Margherita", "prijs" => 12.50, "aantal" => 0),
+        array('artikel' => "Pizza Funghi", "prijs" => 12.50, "aantal" => 0),
+        array('artikel' => "Pizza Marina", "prijs" => 13.95, "aantal" => 0),
+        array('artikel' => "Pizza Hawai", "prijs" => 11.30, "aantal" => 0),
+        array('artikel' => "Pizza Quattro Formaggi", "prijs" => 14.50, "aantal" => 0)
     );
     $_SESSION['artikelen'] = $artikelen;
 }
