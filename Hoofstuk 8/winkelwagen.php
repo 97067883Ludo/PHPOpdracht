@@ -2,6 +2,7 @@
 
 session_start();
 $artikelen = $_SESSION['artikelen'];
+
 ?>
 
 <!DOCTYPE html>
@@ -16,5 +17,36 @@ $artikelen = $_SESSION['artikelen'];
     <title>Document</title>
 </head>
 <body>
+<div class="jumbotron text-center">
+            <h1>Pizza di mama</h1>
+            <a href="index.php">
+                <button type="button" class="btn btn-primary">Shop</button>
+            </a>
+        </div>
+        <div class="container">
+  <h2>Winkelwagen</h2>
+  <div class="panel panel-primary">
+    <div class="panel-heading">Winkelwagen</div>
+
+
+        <?php
+    function Winkelwagen($item, $key){
+        if ($item['aantal'] > 0) {
+            echo'
+            <div class="panel-body">'.$item['aantal'].
+            'x '
+            .$item['artikel'].
+            '<div class="pull-right"> &euro;'
+            .$item['prijs'].
+            '<button class="btn btn-danger">Verwijderen</button></div></div>
+            ';
+        }
+    }
+    
+    array_walk($artikelen, 'Winkelwagen');
+    ?>
+  </div>
+</div>
+
 </body>
 </html>
