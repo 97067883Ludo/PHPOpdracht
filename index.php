@@ -13,7 +13,7 @@
         <input type="text" name="naam" placeholder="Uw naam" required /><br />
         <select name="land">
             <option value="Maak-Keuze">Maak Keuze</option>
-            <option value="NL" selected>Nederland</option>
+            <option value="NL" se>Nederland</option>
             <option value="DE">Duitsland</option>
             <option value="EN">Engeland</option>
             <option value="ES">Spaans</option>
@@ -46,24 +46,28 @@
         $IT = "Buon giorno";
 
         if ($naam == NULL) {
-            showMessage('Naam niet ingevuld');
-        } else {
-            if ($taal == "NL") {
-                echo "$NL, $naam";
-            } elseif ($taal == "DE") {
-                echo "$DE, $naam";
-            } elseif ($taal == "EN") {
-                echo "$EN, $naam";
-            } elseif ($taal == "ES") {
-                echo "$ES, $naam";
-            } elseif ($taal == "FR") {
-                echo "$FR, $naam";
-            } elseif ($taal == "IT") {
-                echo "$IT, $naam";
-            } elseif ($taal == "Maak-Keuze") {
-                header('Location: index.php');
-            } else {
-                echo "ERROR";
+            showMessage("Naam niet ingevuld");
+        } 
+        else {
+            switch ($taal) {
+                case 'NL':
+                    echo "$NL, $naam";
+                    break;
+                case 'DE':
+                    echo "$DE, $naam";
+                    break;
+                case 'EN':
+                    echo "$EN, $naam";
+                    break;
+                case 'ES':
+                    echo "$ES, $naam";
+                    break;
+                case 'FR':
+                    echo "$FR, $naam";
+                    break;
+                case 'IT':
+                    echo "$IT, $naam";
+                    break;
             }
         }
     }
