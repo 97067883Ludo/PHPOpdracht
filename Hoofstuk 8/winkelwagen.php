@@ -66,7 +66,7 @@ $artikelen = $_SESSION['artikelen'];
             $prijsBtw = $prijsExBtw * 0.21;
             $prijsInclBtw = $prijsBtw + $prijsExBtw;
             echo 'Excl.btw &euro;'.$prijsExBtw.'<br />';
-            echo 'Btw &euro;'.round($prijsBtw,2). '<br />';
+            echo 'Btw 21% &euro;'.round($prijsBtw,2). '<br />';
             echo 'Incl.Btw &euro;'. round($prijsInclBtw,2);
             ?>
             <form action="bestellen.php" method="post">
