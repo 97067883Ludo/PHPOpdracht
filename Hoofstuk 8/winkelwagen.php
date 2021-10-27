@@ -2,6 +2,9 @@
 
 session_start();
 $artikelen = $_SESSION['artikelen'];
+if (!isset($_SESSION['artikelen'])) {
+    header('Location: index.php');
+}
 
 ?>
 
@@ -40,7 +43,8 @@ $artikelen = $_SESSION['artikelen'];
                         'x '
                         . $item['artikel'] .
                         '<div class="pull-right"> &euro;'
-                        . $item['prijs'] .
+                        . $item['prijs'].
+                        
                         '<form action="itemVerwijderen.php" method="post">
                         <button type="submit" name="artikelNummer" value="' . $key . '" class="btn btn-danger">Verwijderen</button>
                         </form>

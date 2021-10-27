@@ -11,8 +11,23 @@ if (!isset($_SESSION['artikelen'])) {
     );
     $_SESSION['artikelen'] = $artikelen;
 }
-
 $artikelen = $_SESSION['artikelen'];
+    $datum = new DateTime('now');
+    $datum->format('D');
+    
+    if($datum->format('D') == "Mon"){
+        foreach ($artikelen as $key => $value) {
+            $artikelen[$key]['prijs'] = 7.50; 
+        }
+        $_SESSION['artikelen'] = $artikelen;
+    }
+
+    if ($datum->format('D') == "Tue") {
+        foreach ($artikelen as $key => $value) {
+            $artikelen[$key]['prijs'] * .85;
+        }
+        $_SESSION['artikelen'] = $artikelen;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -32,13 +47,22 @@ $artikelen = $_SESSION['artikelen'];
     <header>
         <div class="jumbotron text-center">
             <h1>Pizza di mama</h1>
+            <p>zoals di mama die maakte</p>
             <a href="winkelwagen.php">
                 <button type="button" class="btn btn-primary">Winkelwagen</button>
             </a>
         </div>
     </header>
     <section>
+    <div class="container">
         <?php
+        if ($datum->format('D') == 'Mon') {
+            echo '
+            <div class="alert alert-success">
+            <strong>Vandaag is het Pizza actie dag daarom zijn alle pizzas vandaag &euro;7,50</strong>
+            </div>
+            ';
+        }
         function printArtikelen($item, $key)
         {
             echo '
@@ -47,13 +71,15 @@ $artikelen = $_SESSION['artikelen'];
                 <p>geserveerd met heerlijke kaas en extra veel tomatensaus</p>
                 <p> &euro; ' . $item['prijs'] . '</p>
                 <form action="itemToevoegen.php" method="post">
-                <button type="submit" name="artikelNummer" value="'.$key.'" class="btn btn-success">Toevoegen '.$item['aantal'].'</button>
+                <button type="submit" name="artikelNummer" value="'.$key.'" 
+                class="btn btn-success">Toevoegen '.$item['aantal'].'</button>
                 </form>
                 </div>
             ';
         }
         array_walk($artikelen, 'printArtikelen');
         ?>
+    </div>
     </section>
     <footer></footer>
 </body>
