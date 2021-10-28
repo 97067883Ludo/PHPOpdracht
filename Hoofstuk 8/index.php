@@ -3,11 +3,11 @@ session_start();
 
 if (!isset($_SESSION['artikelen'])) {
     $artikelen = array(
-        array('artikel' => 'pizza Margherita', 'prijs' => 12.50, 'aantal' => 0),
-        array('artikel' => 'Pizza Funghi', 'prijs' => 12.50, 'aantal' => 0),
-        array('artikel' => 'Pizza Marina', 'prijs' => 13.95, 'aantal' => 0),
-        array('artikel' => 'Pizza Hawai',  'prijs' => 11.30, 'aantal' => 0),
-        array('artikel' => 'Pizza Quattro Formaggi', 'prijs' => 14.50, 'aantal' => 0)
+        array('artikel' => 'pizza Margherita', 'prijs' => 12.50, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano'),
+        array('artikel' => 'Pizza Funghi', 'prijs' => 12.50, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en champions'),
+        array('artikel' => 'Pizza Marina', 'prijs' => 13.95, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano'),
+        array('artikel' => 'Pizza Hawai',  'prijs' => 11.30, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano'),
+        array('artikel' => 'Pizza Quattro Formaggi', 'prijs' => 14.50, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano')
     );
     $_SESSION['artikelen'] = $artikelen;
 }
@@ -69,11 +69,11 @@ $artikelen = $_SESSION['artikelen'];
             echo '
                 <div class="col-sm-4">
                 <h3>' . $item['artikel'] . '</h3>
-                <p>geserveerd met heerlijke kaas en extra veel tomatensaus</p>
-                <p> &euro; ' . $item['prijs'] . '</p>
+                <p>'. $item['omschrijving'] .'</p>
+                <p> ' . $item['prijs'] . ' </p>
                 <form action="itemToevoegen.php" method="post">
                 <button type="submit" name="artikelNummer" value="'.$key.'" 
-                class="btn btn-success">Toevoegen '.$item['aantal'].'</button>
+                class="btn btn-success">Toevoegen ' .$item['aantal']. '</button>
                 </form>
                 </div>
             ';
