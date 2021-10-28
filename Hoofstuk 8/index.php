@@ -11,7 +11,10 @@ if (!isset($_SESSION['artikelen'])) {
     );
     $_SESSION['artikelen'] = $artikelen;
 }
+
 $artikelen = $_SESSION['artikelen'];
+
+
     $datum = new DateTime('now');
     $datum->format('D');
     if($datum->format('D') == "Mon"){

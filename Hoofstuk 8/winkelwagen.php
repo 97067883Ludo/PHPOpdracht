@@ -5,7 +5,10 @@ $artikelen = $_SESSION['artikelen'];
 if (!isset($_SESSION['artikelen'])) {
     header('Location: index.php');
 }
-
+$winkelwagenLeeg = 1;
+if(isset($_GET['winkelwagen'])){
+$winkelwagenLeeg = $_GET['winkelwagen'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,6 +33,14 @@ if (!isset($_SESSION['artikelen'])) {
         </a>
     </div>
     <div class="container">
+        <?php
+        if ($winkelwagenLeeg == 0 && isset($_GET['winkelwagen'])) {
+        echo'
+        <div class="alert alert-warning">
+        Winkelwagen is leeg
+        </div>';
+        }
+        ?>
         <h2>Winkelwagen</h2>
         <div class="panel panel-primary">
             <div class="panel-heading">Winkelwagen</div>

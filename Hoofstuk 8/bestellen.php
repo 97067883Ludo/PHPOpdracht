@@ -1,8 +1,18 @@
 <?php
     session_start();
     $artikelen = $_SESSION['artikelen'];
-
-
+    
+    $sizeOfArray;
+    $sizeOfArray = count($artikelen);
+    $i = 0;
+    foreach ($artikelen as $key => $value) {
+        if ($value['aantal'] == 0) {
+            $i++;
+        }
+    }
+    if ($i == $sizeOfArray) {
+        header('Location: winkelwagen.php?winkelwagen=0');
+    }
 ?>
 
 <!DOCTYPE html>
