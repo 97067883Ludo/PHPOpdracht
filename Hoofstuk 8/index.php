@@ -3,28 +3,27 @@ session_start();
 
 if (!isset($_SESSION['artikelen'])) {
     $artikelen = array(
-        array('artikel' => "pizza Margherita", "prijs" => 12.50, "aantal" => 0),
-        array('artikel' => "Pizza Funghi", "prijs" => 12.50, "aantal" => 0),
-        array('artikel' => "Pizza Marina", "prijs" => 13.95, "aantal" => 0),
-        array('artikel' => "Pizza Hawai", "prijs" => 11.30, "aantal" => 0),
-        array('artikel' => "Pizza Quattro Formaggi", "prijs" => 14.50, "aantal" => 0)
+        array('artikel' => 'pizza Margherita', 'prijs' => 12.50, 'aantal' => 0),
+        array('artikel' => 'Pizza Funghi', 'prijs' => 12.50, 'aantal' => 0),
+        array('artikel' => 'Pizza Marina', 'prijs' => 13.95, 'aantal' => 0),
+        array('artikel' => 'Pizza Hawai',  'prijs' => 11.30, 'aantal' => 0),
+        array('artikel' => 'Pizza Quattro Formaggi', 'prijs' => 14.50, 'aantal' => 0)
     );
     $_SESSION['artikelen'] = $artikelen;
 }
 
 $artikelen = $_SESSION['artikelen'];
 
-
     $datum = new DateTime('now');
     $datum->format('D');
-    if($datum->format('D') == "Mon"){
+    if($datum->format('D') == 'Mon'){
         foreach ($artikelen as $key => $value) {
             $artikelen[$key]['prijs'] = 7.50; 
         }
         $_SESSION['artikelen'] = $artikelen;
     }
 
-    if ($datum->format('D') == "Fri") {
+    if ($datum->format('D') == 'Fri') {
         foreach ($artikelen as $key => $value) {
             $artikelen[$key]['prijs'] * .85;
         }
@@ -78,6 +77,7 @@ $artikelen = $_SESSION['artikelen'];
                 </form>
                 </div>
             ';
+
         }
         array_walk($artikelen, 'printArtikelen');
         ?>

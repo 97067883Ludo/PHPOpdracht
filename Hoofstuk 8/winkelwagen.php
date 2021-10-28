@@ -55,13 +55,12 @@ $winkelwagenLeeg = $_GET['winkelwagen'];
                         'x '
                         . $item['artikel'] .
                         '<div class="pull-right"> &euro;'
-                        . $item['prijs'].
-                        
+                        . $item['prijs'] * $item['aantal'].
                         '<form action="itemVerwijderen.php" method="post">
                         <button type="submit" name="artikelNummer" value="' . $key . '" class="btn btn-danger">Verwijderen</button>
                         </form>
                         </form></div></div>
-                        ';
+                    ';
                 }
             }
 
@@ -77,7 +76,6 @@ $winkelwagenLeeg = $_GET['winkelwagen'];
                 if ($value['aantal'] > 0) {
                     $prijsExBtw = ($prijsExBtw + $value['prijs']) * $value['aantal'];
                 }
-                
             }
             $prijsBtw = $prijsExBtw * 0.21;
             $prijsInclBtw = $prijsBtw + $prijsExBtw;
