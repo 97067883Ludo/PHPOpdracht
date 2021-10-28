@@ -30,11 +30,33 @@
         <div class="col-sm-6 centerd">
             <h3>Persoonlijke gegevens</h3>
             <form action="besteld.php" method="post">
-                
+                <div class="form-group">
+                <input type="radio" name="verzendmethode" id="afhalen" required>
+                <label for="verzendmethode">afhalen</label>
+                <input type="radio" name="verzendmethode" id="verzenden" required>
+                <label for="Verzenden">Verzenden</label>
+                </div>
+                <div class="form-group">
+                <label for="fname">Voornaam:</label>
+                <input type="fname" class="form-control" id="fname" required>
+                <label for="lname">Achternaam:</label>
+                <input type="lname" class="form-control" id="lname" required>
+                <label for="email">Email addres:</label>
+                <input type="email" class="form-control" id="email">
+                <label for="adres">Adres: </label>
+                <input type="text" class="form-control" name="adres" id="adres">
+                <label for="postcode">Postcode: </label>
+                <input type="text" class="form-control" name="postcode" id="postcode">
+                <label for="plaats">Plaats: </label>
+                <input type="text" class="form-control" name="plaats" id="plaats">
+                <label for="datum">Afhaal moment: </label>
+                <input type="date" class="form-control" name="datum" value="<?php echo date("Y-m-d");?>" id="datum">
+                </div>
             </form>
         </div>
         <div class="col-sm-6 centerd">
             <h3>Bestelling</h3>
+
         </div>
     </div>
     </section>

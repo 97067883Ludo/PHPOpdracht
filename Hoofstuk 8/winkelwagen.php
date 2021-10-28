@@ -24,6 +24,7 @@ if (!isset($_SESSION['artikelen'])) {
 <body>
     <div class="jumbotron text-center">
         <h1>Pizza di mama</h1>
+        <p>zoals di mama die maakte</p>
         <a href="index.php">
             <button type="button" class="btn btn-primary">Shop</button>
         </a>

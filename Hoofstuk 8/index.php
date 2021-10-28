@@ -14,7 +14,6 @@ if (!isset($_SESSION['artikelen'])) {
 $artikelen = $_SESSION['artikelen'];
     $datum = new DateTime('now');
     $datum->format('D');
-    
     if($datum->format('D') == "Mon"){
         foreach ($artikelen as $key => $value) {
             $artikelen[$key]['prijs'] = 7.50; 
@@ -22,7 +21,7 @@ $artikelen = $_SESSION['artikelen'];
         $_SESSION['artikelen'] = $artikelen;
     }
 
-    if ($datum->format('D') == "Tue") {
+    if ($datum->format('D') == "Fri") {
         foreach ($artikelen as $key => $value) {
             $artikelen[$key]['prijs'] * .85;
         }
