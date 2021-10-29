@@ -59,7 +59,7 @@ $winkelwagenLeeg = $_GET['winkelwagen'];
                         '<form action="itemVerwijderen.php" method="post">
                         <button type="submit" name="artikelNummer" value="' . $key . '" class="btn btn-danger">Verwijderen</button>
                         </form>
-                        </form></div></div>
+                        </div></div>
                     ';
                 }
             }

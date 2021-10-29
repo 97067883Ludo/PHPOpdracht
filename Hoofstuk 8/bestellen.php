@@ -61,12 +61,40 @@
                 <input type="text" class="form-control" name="plaats" id="plaats">
                 <label for="datum">Afhaal moment: </label>
                 <input type="date" class="form-control" name="datum" value="<?php echo date("Y-m-d");?>" id="datum">
+                <br>
+                <input type="submit" class="btn btn-success pull-right" value="Bestellen">
                 </div>
             </form>
         </div>
         <div class="col-sm-6 centerd">
             <h3>Bestelling</h3>
+            <?php
+            function Winkelwagen($item, $key,)
+            {
+                if ($item['aantal'] > 0) {
+                    echo '
+                    '.$item['aantal'].'X '.$item['artikel'].'<div class="pull-right"> &euro; '.$item['prijs'].' </div><br />
+                    ';
+                }
+            }
+            array_walk($artikelen, 'Winkelwagen');
+            $bedragInclBtw = 0;
+            $bedragExBtw = 0;
+            foreach ($artikelen as $key => $value) {
+                $bedragInclBtw = $bedragInclBtw + $value['prijs'];
+            }
+            
+            $bedragExBtw = $bedragInclBtw * 0.9;
+            echo '
+            <br />
+            <div class="pull-right">
+            Incl.Btw: &euro;'.$bedragInclBtw.'
+            <br />
+            Ex.btw: &euro;'.round($bedragExBtw,2).'
+            
+            ';
 
+            ?>
         </div>
     </div>
     </section>
