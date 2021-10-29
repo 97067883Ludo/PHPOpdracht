@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="main.css">
     <title>Pizza di mama</title>
 </head>
 <body>
@@ -38,7 +39,7 @@
     <section>
         <div class="container">
         <div class="col-sm-6 centerd">
-            <h3>Persoonlijke gegevens</h3>
+            <h3 class="center">Persoonlijke gegevens</h3>
             <form action="besteld.php" method="post">
                 <div class="form-group">
                 <input type="radio" name="verzendmethode" id="afhalen" required>
@@ -48,26 +49,26 @@
                 </div>
                 <div class="form-group">
                 <label for="fname">Voornaam:</label>
-                <input type="fname" class="form-control" id="fname" required>
+                <input type="fname" name="fname" class="form-control" id="fname" required>
                 <label for="lname">Achternaam:</label>
-                <input type="lname" class="form-control" id="lname" required>
+                <input type="lname" name="lname" class="form-control" id="lname" required>
                 <label for="email">Email addres:</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" name="email" class="form-control" id="email">
                 <label for="adres">Adres: </label>
-                <input type="text" class="form-control" name="adres" id="adres">
+                <input type="text" name="adres" class="form-control" id="adres">
                 <label for="postcode">Postcode: </label>
-                <input type="text" class="form-control" name="postcode" id="postcode">
-                <label for="plaats">Plaats: </label>
-                <input type="text" class="form-control" name="plaats" id="plaats">
+                <input type="text" name="postcode" class="form-control" id="postcode">
+                <label for="plaatsnaam">Plaatsnaam: </label>
+                <input type="text" name="plaatsnaam" class="form-control" id="plaats">
                 <label for="datum">Afhaal moment: </label>
-                <input type="date" class="form-control" name="datum" value="<?php echo date("Y-m-d");?>" id="datum">
+                <input type="date" name="datum" class="form-control" value="<?php echo date("Y-m-d");?>" id="datum">
                 <br>
                 <input type="submit" class="btn btn-success pull-right" value="Bestellen">
                 </div>
             </form>
         </div>
-        <div class="col-sm-6 centerd">
-            <h3>Bestelling</h3>
+        <div class="col-sm-6">
+            <h3 class="center">Bestelling</h3>
             <?php
             function Winkelwagen($item, $key,)
             {
@@ -90,7 +91,7 @@
             <div class="pull-right">
             Incl.Btw: &euro;'.$bedragInclBtw.'
             <br />
-            Ex.btw: &euro;'.round($bedragExBtw,2).'
+             Ex.btw: &euro;'.round($bedragExBtw,2).'
             
             ';
 
