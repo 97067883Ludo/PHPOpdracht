@@ -6,7 +6,7 @@ if (!isset($_SESSION['artikelen'])) {
         array('artikel' => 'pizza Margherita', 'prijs' => 12.50, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano'),
         array('artikel' => 'Pizza Funghi', 'prijs' => 12.50, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en champions'),
         array('artikel' => 'Pizza Marina', 'prijs' => 13.95, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano'),
-        array('artikel' => 'Pizza Hawai',  'prijs' => 11.30, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano'),
+        array('artikel' => 'Pizza Hawaii',  'prijs' => 11.30, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano'),
         array('artikel' => 'Pizza Quattro Formaggi', 'prijs' => 14.50, 'aantal' => 0, 'omschrijving'=>'Geserveerd met heerlijke mozarella, tomatensaus en origano')
     );
     $_SESSION['artikelen'] = $artikelen;

@@ -7,21 +7,11 @@ $postcode = htmlspecialchars($_POST['postcode']);
 $plaatsnaam = htmlspecialchars($_POST['plaatsnaam']);
 $datum = htmlspecialchars($_POST['datum']);
 
-echo "
-$fname
-$lname
-$email
-$adres
-$postcode
-$plaatsnaam
-$datum
-";
 $inputDatum = array();
 if ($fname == NULL || $lname == NULL || $email == NULL || $adres == NULL || $postcode == NULL || $plaatsnaam == NULL || $datum == NULL) {
     header('Location: bestellen.php');
 }
-$inputDatum = explode('-',$datum);
-print_r($inputDatum);
+$inputDatum = explode('-', $datum);
 $datumChecker = 0;
 $acuteleDatum = new DateTime('now');
 
@@ -41,6 +31,7 @@ if ($datumChecker < 3) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,8 +42,9 @@ if ($datumChecker < 3) {
     <link rel="stylesheet" href="main.css">
     <title>Pizza di mama - besteld</title>
 </head>
+
 <body>
-    <header>        
+    <header>
         <div class="jumbotron text-center">
             <h1>Pizza di mama</h1>
             <p>zoals di mama die maakte</p>
@@ -60,7 +52,49 @@ if ($datumChecker < 3) {
     </header>
     <div class="container">
         <h3 class="center">Je bestelling</h3>
-    </div>
+        <div class="col-sm-6">
+            <h4 class="center">Uw informatie</h4>
+            <h5>Persoonlijke informatie:</h5>
+            <?php
+            echo '
+           <ul> Voornaam: 
+           ' . $fname . '
+           <br />
+           Achternaam 
+           ' . $lname . '
+           </ul>
+           ';
+            ?>
+            <h5>Contact informatie:</h5>
+            <?php
+            echo '
+           <ul>
+           Email-adres: 
+           ' . $email . '
+           </ul>
+           ';
+            ?>
+            <h5>Adres gegevens: </h5>
+            <?php
+            echo '
+           <ul>
+           Adres:
+           ' .$adres. '
+           <br />
+           Postcode:
+           ' .$postcode. '
+           <br />
+           Woonplaats: 
+           ' .$plaatsnaam. '
+           </ul>
+           ';
+            ?>
+        </div>
+        <div class="col-sm-6">
+            <h4 class="center">Bestelde items</h4>
+            
+        </div>
     </div>
 </body>
+
 </html>

@@ -38,14 +38,14 @@
     </header>
     <section>
         <div class="container">
-        <div class="col-sm-6 centerd">
+        <div class="col-sm-6">
             <h3 class="center">Persoonlijke gegevens</h3>
             <form action="besteld.php" method="post">
                 <div class="form-group">
                 <input type="radio" name="verzendmethode" id="afhalen" required>
                 <label for="verzendmethode">afhalen</label>
                 <input type="radio" name="verzendmethode" id="verzenden" required>
-                <label for="Verzenden">Verzenden</label>
+                <label for="Verzenden">Bezorgen + &euro;5 Bezorgkosten</label>
                 </div>
                 <div class="form-group">
                 <label for="fname">Voornaam:</label>
@@ -60,7 +60,7 @@
                 <input type="text" name="postcode" class="form-control" id="postcode">
                 <label for="plaatsnaam">Plaatsnaam: </label>
                 <input type="text" name="plaatsnaam" class="form-control" id="plaats">
-                <label for="datum">Afhaal moment: </label>
+                <label for="datum">Afhaal dag: </label>
                 <input type="date" name="datum" class="form-control" value="<?php echo date("Y-m-d");?>" id="datum">
                 <br>
                 <input type="submit" class="btn btn-success pull-right" value="Bestellen">
@@ -92,7 +92,6 @@
             Incl.Btw: &euro;'.$bedragInclBtw.'
             <br />
              Ex.btw: &euro;'.round($bedragExBtw,2).'
-            
             ';
 
             ?>
