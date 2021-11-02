@@ -109,9 +109,6 @@ if ($datumChecker < 3) {
                     <br />
                     ';
                     
-                    #echo $value['artikel'];
-                    #echo $value['prijs'];
-                    #echo'<br/>';
                 }
             }
             $bedragInclBtw = 0;
