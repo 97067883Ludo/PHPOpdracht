@@ -32,6 +32,28 @@ function berekeningNa10Jaar($ingelegdBedrag, $Rentepercentage){
     }
 
 }
+function eindbedragverdubbeld($ingelegdBedrag, $Rentepercentage){
+    
+    $nwbedrag = $ingelegdBedrag * (1 + $Rentepercentage / 100);
+    $bedragkeer2 = $ingelegdBedrag * 2;
+    $i =1;
+    while ($bedragkeer2 >= $nwbedrag) {
+        $nwbedrag = $ingelegdBedrag * (1 + $Rentepercentage / 100);
+        $ingelegdBedrag = $nwbedrag;
+        echo'
+        <tr>
+        <td>
+        '.$i.'
+        </td>
+        <td>
+        '.round($nwbedrag,2).'
+        </td>
+        </tr>
+        ';
+        $i++;
+    }
+
+}
 
 
 
@@ -69,6 +91,9 @@ function berekeningNa10Jaar($ingelegdBedrag, $Rentepercentage){
                     if ($optradio == 'eindbedragna10jaar') {
                         berekeningNa10Jaar($ingelegdBedrag, $Rentepercentage);
                     } 
+                    if ($optradio == 'eindbedragverdubbeld') {
+                        eindbedragverdubbeld($ingelegdBedrag, $Rentepercentage);
+                    }
                     ?>
                     </tbody>
                 </table>
