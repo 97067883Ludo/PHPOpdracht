@@ -1,4 +1,8 @@
 <?php
+session_start();
+$artikelen = $_SESSION['artikelen'];
+
+$verzendMethode = htmlspecialchars($_POST['verzendmethode']);
 $fname = htmlspecialchars($_POST['fname']);
 $lname = htmlspecialchars($_POST['lname']);
 $email = htmlspecialchars($_POST['email']);
@@ -92,7 +96,64 @@ if ($datumChecker < 3) {
         </div>
         <div class="col-sm-6">
             <h4 class="center">Bestelde items</h4>
+            <?php
+            foreach ($artikelen as $key => $value) {
+                if ($value['aantal'] > 0) {
+                    echo'
+                    '.$value['aantal'].'X
+                    '.$value['artikel'].'
+                    <div class="pull-right">
+                    &euro;
+                    '.$value['prijs'] * $value['aantal'].'
+                    </div>                
+                    <br />
+                    ';
+                    
+                    #echo $value['artikel'];
+                    #echo $value['prijs'];
+                    #echo'<br/>';
+                }
+            }
+            $bedragInclBtw = 0;
+            if ($verzendMethode == 'bezorgen') {
+               echo 'bezorgkosten: 
+               <div class="pull-right">
+               &euro; 5
+               </div>
+               '; 
+               $bedragInclBtw = $bedragInclBtw + 5;
+            }
+
+            $bedragBtw = 0;
+            foreach ($artikelen as $key => $value) {
+                if ($value['aantal'] > 0) {
+                
+                $bedragInclBtw = $bedragInclBtw + $value['prijs'] * $value['aantal'];
+                }
+            }
+            $bedragBtw = $bedragInclBtw * 0.09;
+            $datum = new DateTime('now');
+        if($datum->format('D') == 'Fri' && $bedragInclBtw> 20){
+            echo'
+            <div class="alert alert-success">
+            <strong>pizza start weekend dag uw krijgt 15% korting</strong>
+            </div>
+        ';
+        $bedragInclBtw = ($bedragInclBtw / 100) * 85;
+        }
             
+            echo '
+            <br />
+            <div class="pull-right">
+            Inclusief btw: &euro;'.round($bedragInclBtw,2).'
+            <br />
+             Btw bedrag: &euro;'.round($bedragBtw,2).'
+             </div>
+            ';
+            
+            echo '<br /><button class="btn btn-success">betalen</button>';
+
+            ?>
         </div>
     </div>
 </body>

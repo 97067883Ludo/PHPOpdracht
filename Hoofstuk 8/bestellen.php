@@ -42,10 +42,10 @@
             <h3 class="center">Persoonlijke gegevens</h3>
             <form action="besteld.php" method="post">
                 <div class="form-group">
-                <input type="radio" name="verzendmethode" id="afhalen" required>
+                <input type="radio" name="verzendmethode" value="afhalen" id="afhalen" required>
                 <label for="verzendmethode">afhalen</label>
-                <input type="radio" name="verzendmethode" id="verzenden" required>
-                <label for="Verzenden">Bezorgen + &euro;5 Bezorgkosten</label>
+                <input type="radio" name="verzendmethode" value="bezorgen" id="bezorgen" required>
+                <label for="bezorgen">Bezorgen + &euro;5 Bezorgkosten</label>
                 </div>
                 <div class="form-group">
                 <label for="fname">Voornaam:</label>
@@ -74,24 +74,35 @@
             {
                 if ($item['aantal'] > 0) {
                     echo '
-                    '.$item['aantal'].'X '.$item['artikel'].'<div class="pull-right"> &euro; '.$item['prijs'].' </div><br />
+                    '.$item['aantal'].'X '.$item['artikel'].'<div class="pull-right"> &euro; '.$item['prijs'] * $item['aantal'].' </div><br />
                     ';
                 }
             }
             array_walk($artikelen, 'Winkelwagen');
             $bedragInclBtw = 0;
-            $bedragExBtw = 0;
+            $bedragBtw = 0;
             foreach ($artikelen as $key => $value) {
-                $bedragInclBtw = $bedragInclBtw + $value['prijs'];
+                if ($value['aantal'] > 0) {
+                $bedragInclBtw = $bedragInclBtw + $value['prijs'] * $value['aantal'];
+                }
             }
-            
-            $bedragExBtw = $bedragInclBtw * 0.9;
+
+            $bedragBtw = $bedragInclBtw * 0.09;
+            $datum = new DateTime('now');
+        if($datum->format('D') == 'Fri' && $bedragInclBtw> 20){
+            echo'
+            <div class="alert alert-success">
+            <strong>pizza start weekend dag uw krijgt 15% korting</strong>
+            </div>
+            ';
+        $bedragInclBtw = ($bedragInclBtw / 100) * 85;
+        }
             echo '
             <br />
             <div class="pull-right">
-            Incl.Btw: &euro;'.$bedragInclBtw.'
+            Inclusief btw: &euro;'.round($bedragInclBtw,2).'
             <br />
-             Ex.btw: &euro;'.round($bedragExBtw,2).'
+             Btw bedrag: &euro;'.round($bedragBtw,2).'
             ';
 
             ?>

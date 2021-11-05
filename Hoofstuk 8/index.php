@@ -14,6 +14,8 @@ if (!isset($_SESSION['artikelen'])) {
 
 $artikelen = $_SESSION['artikelen'];
 
+$mon = 'Vandaag is het Pizza actie dag daarom zijn alle pizzas vandaag &euro;7,50';
+
     $datum = new DateTime('now');
     $datum->format('D');
     if($datum->format('D') == 'Mon'){
@@ -23,12 +25,7 @@ $artikelen = $_SESSION['artikelen'];
         $_SESSION['artikelen'] = $artikelen;
     }
 
-    if ($datum->format('D') == 'Fri') {
-        foreach ($artikelen as $key => $value) {
-            $artikelen[$key]['prijs'] * .85;
-        }
-        $_SESSION['artikelen'] = $artikelen;
-    }
+
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +57,7 @@ $artikelen = $_SESSION['artikelen'];
         if ($datum->format('D') == 'Mon') {
             echo '
             <div class="alert alert-success">
-            <strong>Vandaag is het Pizza actie dag daarom zijn alle pizzas vandaag &euro;7,50</strong>
+            <strong>'.$mon.'</strong>
             </div>
             ';
         }
@@ -77,7 +74,6 @@ $artikelen = $_SESSION['artikelen'];
                 </form>
                 </div>
             ';
-
         }
         array_walk($artikelen, 'printArtikelen');
         ?>

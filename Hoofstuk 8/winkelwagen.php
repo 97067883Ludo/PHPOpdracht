@@ -69,19 +69,32 @@ $winkelwagenLeeg = $_GET['winkelwagen'];
         </div>
         <div class="pull-right">
             <?php
-            $prijsExBtw =0;
-            $prijsBtw =0;
-            $prijsInclBtw =0;
+            $bedragInclBtw = 0;
+            $bedragBtw = 0;
             foreach ($artikelen as $key => $value) {
                 if ($value['aantal'] > 0) {
-                    $prijsExBtw = ($prijsExBtw + $value['prijs']) * $value['aantal'];
+                
+                $bedragInclBtw = $bedragInclBtw + $value['prijs'] * $value['aantal'];
                 }
             }
-            $prijsBtw = $prijsExBtw * 0.21;
-            $prijsInclBtw = $prijsBtw + $prijsExBtw;
-            echo 'Excl.btw &euro;'.$prijsExBtw.'<br />';
-            echo 'Btw 21% &euro;'.round($prijsBtw,2). '<br />';
-            echo 'Incl.Btw &euro;'. round($prijsInclBtw,2);
+                $bedragBtw = $bedragInclBtw * 0.09;
+                $datum = new DateTime('now');
+            if($datum->format('D') == 'Fri' && $bedragInclBtw> 20){
+                echo'
+                <div class="alert alert-success">
+                <strong>pizza start weekend dag uw krijgt 15% korting</strong>
+                </div>
+            ';
+            $bedragInclBtw = ($bedragInclBtw / 100) * 85;
+            }
+            
+            echo '
+            <br />
+            <div class="pull-right">
+            Inclusief btw: &euro;'.round($bedragInclBtw,2).'
+            <br />
+             Btw Bedrag: &euro;'.round($bedragBtw,2).'
+            ';
             ?>
             <form action="bestellen.php" method="post">
                 <button type="submit" class="btn btn-success">Bestellen</button>
